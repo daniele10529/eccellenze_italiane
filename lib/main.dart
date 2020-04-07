@@ -26,6 +26,7 @@ class _my_content extends State<First_page>{
 
   String nome = "";
   String titolo = "Eccellenze Italiane";
+  bool btnDisable = true;
   TextEditingController contrNome = new TextEditingController();
 
   @override
@@ -59,10 +60,10 @@ class _my_content extends State<First_page>{
                        child: Text("Inserisci",
                        style: TextStyle(color: Colors.black87,fontSize: 18),
                     ),
-                    onPressed: (){
+                    onPressed: btnDisable ? null : (){
                          _aseegnanome();
-                    }
-                   )
+                      }
+                   ),
               ),
             ),
             new Container(
@@ -71,6 +72,7 @@ class _my_content extends State<First_page>{
                 alignment: Alignment.bottomCenter,
                 child: new TextField(
                      controller: contrNome,
+                     onChanged: _onchanged,
                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "nome",
@@ -89,5 +91,11 @@ class _my_content extends State<First_page>{
        nome = contrNome.text;
     });
   }
+  void _onchanged(String value){
+    setState(() {
+      btnDisable = (contrNome.text.length == 0);
+    });
+  }
+
 }
 
