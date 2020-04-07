@@ -55,9 +55,25 @@ class _my_content extends State<First_page>{
               ),
             ),
 
+            new Container(
+              padding: const EdgeInsets.only(top: 50),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: new TextField(
+                  controller: contrNome,
+                  onChanged: _onchanged,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "nome",
+                  ),
+                  style: TextStyle(color: Colors.black,fontSize: 18),
+                ),
+              ),
+            ),
+
             new Center(
               child:  new Container(
-                  padding: EdgeInsets.only(top: 100),
+                  padding: EdgeInsets.only(top: 50),
                   child:
                    new RaisedButton(
                        child: Text("Inserisci",
@@ -70,21 +86,7 @@ class _my_content extends State<First_page>{
               ),
             ),
 
-            new Container(
-              padding: const EdgeInsets.only(top: 50),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: new TextField(
-                     controller: contrNome,
-                     onChanged: _onchanged,
-                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "nome",
-                  ),
-                  style: TextStyle(color: Colors.black,fontSize: 18),
-                ),
-              ),
-            ),
+
 
           ],
 
@@ -105,6 +107,12 @@ class _my_content extends State<First_page>{
     setState(() {
       btnDisable = (contrNome.text.length == 0);
     });
+  }
+
+  @override
+  void dispose(){
+    contrNome.dispose();
+    super.dispose();
   }
 
 }
