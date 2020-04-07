@@ -34,24 +34,27 @@ class _my_content extends State<First_page>{
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(this.titolo,
-         style: TextStyle(color: Colors.red,fontSize: 24),
+         style: TextStyle(color: Colors.red,fontSize: 30),
         ),
         backgroundColor: Colors.blueGrey,
       ),
       body: new Container(
         padding: const EdgeInsets.all(22.0),
+
         child: new Column(
           children: <Widget>[
             new Center(
               child: Text("Pagina principale",
-                style: TextStyle(color: Colors.purple,fontSize: 18),
+                style: TextStyle(color: Colors.purple,fontSize: 24),
               ),
             ),
+
             new Center(child: new Container(
                   padding: EdgeInsets.only(top: 30),
-                  child: Text(this.nome),
+                  child: Text(this.nome,style: TextStyle(color: Colors.black,fontSize: 18),),
               ),
             ),
+
             new Center(
               child:  new Container(
                   padding: EdgeInsets.only(top: 100),
@@ -66,6 +69,7 @@ class _my_content extends State<First_page>{
                    ),
               ),
             ),
+
             new Container(
               padding: const EdgeInsets.only(top: 50),
               child: Align(
@@ -77,13 +81,19 @@ class _my_content extends State<First_page>{
                         border: OutlineInputBorder(),
                         labelText: "nome",
                   ),
+                  style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
               ),
             ),
+
           ],
+
         ),
+
       ),
+
     );
+
   }
 
   void _aseegnanome(){
