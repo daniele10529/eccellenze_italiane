@@ -46,8 +46,10 @@ class _my_content extends State<First_page>{
                 style: TextStyle(color: Colors.purple,fontSize: 18),
               ),
             ),
-            new Center(
-              child: Text(this.nome),
+            new Center(child: new Container(
+                  padding: EdgeInsets.only(top: 30),
+                  child: Text(this.nome),
+              ),
             ),
             new Center(
               child:  new Container(
