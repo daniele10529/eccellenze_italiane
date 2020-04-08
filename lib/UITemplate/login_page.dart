@@ -28,12 +28,15 @@ class my_content extends State<First_page>{
           style: TextStyle(color: Colors.red,fontSize: 30),
         ),
         backgroundColor: Colors.blueGrey,
+        actions: <Widget>[
+          new Image.asset("assets/icons/logo.png"),
+        ],
       ),
 
       body: new Container(
         padding: const EdgeInsets.all(22.0),
 
-        child: new Column(
+        child: new ListView(
           children: <Widget>[
             new Center(
               child: Text("Registrazione cliente",
@@ -54,9 +57,11 @@ class my_content extends State<First_page>{
                 child: new TextField(
                   controller: contrNome,
                   onChanged: _onchanged,
+                  onTap: _selnome,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Nome",
+                    icon: new Icon(Icons.account_box),
                   ),
                   style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
@@ -70,9 +75,11 @@ class my_content extends State<First_page>{
                 child: new TextField(
                   controller: contrCognome,
                   onChanged: _onchanged,
+                  onTap: _selcogn,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Cognome",
+                    icon: new Icon(Icons.account_box),
                   ),
                   style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
@@ -86,9 +93,11 @@ class my_content extends State<First_page>{
                 child: new TextField(
                   controller: contrEmail,
                   onChanged: _onchanged,
+                  onTap: _selmail,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Email",
+                    icon: new Icon(Icons.email),
                   ),
                   style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
@@ -102,9 +111,11 @@ class my_content extends State<First_page>{
                 child: new TextField(
                   controller: contrVia,
                   onChanged: _onchanged,
+                  onTap: _selvia,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Via",
+                    icon: new Icon(Icons.account_box),
                   ),
                   style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
@@ -118,9 +129,11 @@ class my_content extends State<First_page>{
                 child: new TextField(
                   controller: contrCitta,
                   onChanged: _onchanged,
+                  onTap: _selcitta,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Citta",
+                    icon: new Icon(Icons.account_box),
                   ),
                   style: TextStyle(color: Colors.black,fontSize: 18),
                 ),
@@ -137,6 +150,7 @@ class my_content extends State<First_page>{
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Note aggiuntive",
+                    icon: new Icon(Icons.mode_edit),
                   ),
                 ),
               ),
@@ -173,6 +187,11 @@ class my_content extends State<First_page>{
     setState(() {
       dati = contrNome.text + " "+contrCognome.text+" "+contrEmail.text+
       " "+contrVia.text+" "+contrCitta.text;
+      contrNome.clear();
+      contrCognome.clear();
+      contrEmail.clear();
+      contrCitta.clear();
+      contrVia.clear();
     });
   }
   void _onchanged(String value){
@@ -180,6 +199,42 @@ class my_content extends State<First_page>{
       btnDisable = (contrNome.text.length == 0 || contrCognome.text.length == 0
           || contrEmail.text.length == 0 || contrVia.text.length == 0 || contrCitta.text.length == 0);
     });
+  }
+
+   void _selnome(){
+     String text = contrNome.text;
+     contrNome.value = contrNome.value.copyWith(
+        text: text,
+        selection : TextSelection(baseOffset: 0,extentOffset: contrNome.text.length),
+    );
+  }
+  void _selcogn(){
+    String text = contrCognome.text;
+    contrCognome.value = contrCognome.value.copyWith(
+      text: text,
+      selection : TextSelection(baseOffset: 0,extentOffset: contrCognome.text.length),
+    );
+  }
+  void _selmail(){
+    String text = contrEmail.text;
+    contrEmail.value = contrEmail.value.copyWith(
+      text: text,
+      selection : TextSelection(baseOffset: 0,extentOffset: contrEmail.text.length),
+    );
+  }
+  void _selcitta(){
+    String text = contrCitta.text;
+    contrCitta.value = contrCitta.value.copyWith(
+      text: text,
+      selection : TextSelection(baseOffset: 0,extentOffset: contrCitta.text.length),
+    );
+  }
+  void _selvia(){
+    String text = contrVia.text;
+    contrVia.value = contrVia.value.copyWith(
+      text: text,
+      selection : TextSelection(baseOffset: 0,extentOffset: contrVia.text.length),
+    );
   }
 
   @override
