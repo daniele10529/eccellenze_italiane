@@ -18,6 +18,7 @@ class my_content extends State<First_page>{
   TextEditingController contrVia = new TextEditingController();
   TextEditingController contrCitta = new TextEditingController();
   TextEditingController contrEmail = new TextEditingController();
+  TextEditingController contrNote = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class my_content extends State<First_page>{
         ),
         backgroundColor: Colors.blueGrey,
         actions: <Widget>[
-          new Image.asset("assets/icons/logo.png"),
+          new Image.asset("assets/icons/logo_app.png"),
         ],
       ),
 
@@ -146,6 +147,8 @@ class my_content extends State<First_page>{
                 alignment: Alignment.bottomLeft,
                 child: new TextField(
                   maxLines: 8,
+                  controller: contrNote,
+                  onTap: _selnote,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -192,6 +195,7 @@ class my_content extends State<First_page>{
       contrEmail.clear();
       contrCitta.clear();
       contrVia.clear();
+      contrNote.clear();
     });
   }
   void _onchanged(String value){
@@ -234,6 +238,13 @@ class my_content extends State<First_page>{
     contrVia.value = contrVia.value.copyWith(
       text: text,
       selection : TextSelection(baseOffset: 0,extentOffset: contrVia.text.length),
+    );
+  }
+  void _selnote(){
+    String text = contrNote.text;
+    contrNote.value = contrNote.value.copyWith(
+      text: text,
+      selection : TextSelection(baseOffset: 0,extentOffset: contrNote.text.length),
     );
   }
 
