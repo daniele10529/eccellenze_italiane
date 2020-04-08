@@ -25,13 +25,14 @@ class my_content extends State<First_page>{
     return new Scaffold(
 
       appBar: new AppBar(
+        actions: <Widget>[
+          new Image.asset("assets/icons/logo_app.png"),
+        ],
         title: new Text(this.titolo,
           style: TextStyle(color: Colors.red,fontSize: 30),
         ),
         backgroundColor: Colors.blueGrey,
-        actions: <Widget>[
-          new Image.asset("assets/icons/logo_app.png"),
-        ],
+
       ),
 
       body: new Container(
@@ -92,6 +93,7 @@ class my_content extends State<First_page>{
               child: Align(
                 alignment: Alignment.topLeft,
                 child: new TextField(
+                  // keyboardType: TextInputType.emailAddress,
                   controller: contrEmail,
                   onChanged: _onchanged,
                   onTap: _selmail,
@@ -168,7 +170,7 @@ class my_content extends State<First_page>{
                       style: TextStyle(color: Colors.black87,fontSize: 18),
                     ),
                     onPressed: btnDisable ? null : (){
-                      _aseegnanome();
+                      _assegnanome();
                     }
                 ),
               ),
@@ -186,7 +188,7 @@ class my_content extends State<First_page>{
 
   }
 
-  void _aseegnanome(){
+  void _assegnanome(){
     setState(() {
       dati = contrNome.text + " "+contrCognome.text+" "+contrEmail.text+
       " "+contrVia.text+" "+contrCitta.text;
@@ -202,8 +204,28 @@ class my_content extends State<First_page>{
     setState(() {
       btnDisable = (contrNome.text.length == 0 || contrCognome.text.length == 0
           || contrEmail.text.length == 0 || contrVia.text.length == 0 || contrCitta.text.length == 0);
+
+      if(dati.length != 0 ){
+        dati = "";
+      }
     });
   }
+
+/*
+avevo provato ad utilizzre una funzione generica per selezionare il testo quando il
+TextField riceve il focus ma si comporta in modo strano
+sovrascrive le lettere.
+  _select(TextEditingController t){
+    setState(() {
+      String text =  t.text;
+      t.value = t.value.copyWith(
+        text: text,
+        selection : TextSelection(baseOffset: 0,extentOffset: text.length),
+      );
+      return;
+    });
+  }
+  */
 
    void _selnome(){
      String text = contrNome.text;
