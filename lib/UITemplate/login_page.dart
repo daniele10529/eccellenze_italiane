@@ -273,6 +273,11 @@ sovrascrive le lettere.
   @override
   void dispose(){
     contrNome.dispose();
+    contrCognome.dispose();
+    contrEmail.dispose();
+    contrCitta.dispose();
+    contrVia.dispose();
+    contrNote.dispose();
     super.dispose();
   }
 
