@@ -189,8 +189,7 @@ class my_content extends State<First_page>{
                   child:
                   new RaisedButton(
                       child: Text("Inserisci",
-                        style: TextStyle(color: Colors.black87,fontSize: 18),
-                      ),
+                        style: TextStyle(color: Colors.black87,fontSize: 18),),
                       //finche la variabile è true restituisce null all'onpress
                       onPressed: btnDisable ? null : (){
                         _assegnanome();
@@ -198,23 +197,24 @@ class my_content extends State<First_page>{
                   ),
 
                 ),
+
                 new Container(
                   padding: EdgeInsets.only(top: 50,left: 50),
-                  child : new RaisedButton(
-                      child: Text("Cancella campi",
-                        style: TextStyle(color: Colors.black87,fontSize: 18),
-                      ),
+                  child:
+                  new RaisedButton(
+                      child: Text("Svuota campi",
+                        style: TextStyle(color: Colors.black87,fontSize: 18),),
                       //finche la variabile è true restituisce null all'onpress
                       onPressed: insert ? null : (){
                         _clearFileds();
                       }
                   ),
+
                 ),
+
               ],
 
             ),
-
-
 
           ],
 
@@ -239,12 +239,16 @@ class my_content extends State<First_page>{
   }
 
   void _clearFileds(){
-    contrNome.clear();
-    contrCognome.clear();
-    contrEmail.clear();
-    contrCitta.clear();
-    contrVia.clear();
-    contrNote.clear();
+    setState(() {
+      contrNome.clear();
+      contrCognome.clear();
+      contrEmail.clear();
+      contrCitta.clear();
+      contrVia.clear();
+      contrNote.clear();
+      btnDisable = true;
+      insert = true;
+    });
   }
 
   void _onchanged(String value){
@@ -325,5 +329,15 @@ sovrascrive le lettere.
     );
   }
 
+  @override
+  void dispose(){
+     contrNome.dispose();
+     contrCognome.dispose();
+     contrEmail.dispose();
+     contrCitta.dispose();
+     contrVia.dispose();
+     contrNote.dispose();
+     super.dispose();
+  }
 
 }
