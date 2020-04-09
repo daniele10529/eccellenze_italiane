@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:eccellenzeitaliane/UITemplate/data_page.dart';
 
 class First_page extends StatefulWidget{
+  //creo lo stato del widget istanziando una classe per gli oggetti
   @override
   State<StatefulWidget> createState() {
     return my_content();
@@ -13,6 +15,9 @@ class my_content extends State<First_page>{
   String dati = "";
   String titolo = "Eccellenze Italiane";
   bool btnDisable = true;
+  bool insert = true;
+
+  //creo i controller per prelevare i dati dai Textfield
   TextEditingController contrNome = new TextEditingController();
   TextEditingController contrCognome = new TextEditingController();
   TextEditingController contrVia = new TextEditingController();
@@ -20,24 +25,37 @@ class my_content extends State<First_page>{
   TextEditingController contrEmail = new TextEditingController();
   TextEditingController contrNote = new TextEditingController();
 
+
+
+ //costruisco il widget stateful garantendo l'override
   @override
   Widget build(BuildContext context) {
+    //ritorno il contenitore principale
     return new Scaffold(
 
+      //inserisco una barra superiore
       appBar: new AppBar(
         actions: <Widget>[
           new Image.asset("assets/icons/logo_app.png"),
+          IconButton(
+            icon: const Icon(Icons.arrow_forward_ios),
+            tooltip: 'Pagina dei dati',
+            onPressed: () {
+              new data_content().build(context);
+            },
+          ),
         ],
         title: new Text(this.titolo,
           style: TextStyle(color: Colors.red,fontSize: 30),
         ),
         backgroundColor: Colors.blueGrey,
-
       ),
 
+      //inserisco la parte centrale
       body: new Container(
         padding: const EdgeInsets.all(22.0),
 
+        //creo una lista di oggetti
         child: new ListView(
           children: <Widget>[
             new Center(
@@ -57,9 +75,12 @@ class my_content extends State<First_page>{
               child: Align(
                 alignment: Alignment.topLeft,
                 child: new TextField(
+                  //aggancio il controller all'oggetto
                   controller: contrNome,
+                  //scateno i metodi onchange e ontap invocando 2 funzioni
                   onChanged: _onchanged,
                   onTap: _selnome,
+                  //decoro la casella di testo
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Nome",
@@ -161,19 +182,36 @@ class my_content extends State<First_page>{
               ),
             ),
 
-            new Center(
-              child:  new Container(
-                padding: EdgeInsets.only(top: 50),
-                child:
-                new RaisedButton(
-                    child: Text("Inserisci",
-                      style: TextStyle(color: Colors.black87,fontSize: 18),
-                    ),
-                    onPressed: btnDisable ? null : (){
-                      _assegnanome();
-                    }
+            new Row(
+              children: <Widget>[
+                new Container(
+                  padding: EdgeInsets.only(top: 50),
+                  child:
+                  new RaisedButton(
+                      child: Text("Inserisci",
+                        style: TextStyle(color: Colors.black87,fontSize: 18),
+                      ),
+                      //finche la variabile è true restituisce null all'onpress
+                      onPressed: btnDisable ? null : (){
+                        _assegnanome();
+                      }
+                  ),
+
                 ),
-              ),
+                new Container(
+                  padding: EdgeInsets.only(top: 50,left: 50),
+                  child : new RaisedButton(
+                      child: Text("Cancella campi",
+                        style: TextStyle(color: Colors.black87,fontSize: 18),
+                      ),
+                      //finche la variabile è true restituisce null all'onpress
+                      onPressed: insert ? null : (){
+                        _clearFileds();
+                      }
+                  ),
+                ),
+              ],
+
             ),
 
 
@@ -189,22 +227,38 @@ class my_content extends State<First_page>{
   }
 
   void _assegnanome(){
+    //aggiorno lo stato
     setState(() {
       dati = contrNome.text + " "+contrCognome.text+" "+contrEmail.text+
       " "+contrVia.text+" "+contrCitta.text;
-      contrNome.clear();
-      contrCognome.clear();
-      contrEmail.clear();
-      contrCitta.clear();
-      contrVia.clear();
-      contrNote.clear();
+      //pulisco le caselle di testo
+      _clearFileds();
+      btnDisable = true;
+      insert = true;
     });
   }
+
+  void _clearFileds(){
+    contrNome.clear();
+    contrCognome.clear();
+    contrEmail.clear();
+    contrCitta.clear();
+    contrVia.clear();
+    contrNote.clear();
+  }
+
   void _onchanged(String value){
+    //agggiorno lo stato
     setState(() {
+      //la variabile rimane true finche tutti i campi non sono pieni
       btnDisable = (contrNome.text.length == 0 || contrCognome.text.length == 0
           || contrEmail.text.length == 0 || contrVia.text.length == 0 || contrCitta.text.length == 0);
 
+      insert = (contrNome.text.length == 0 && contrCognome.text.length == 0
+          && contrEmail.text.length == 0 && contrVia.text.length == 0 && contrCitta.text.length == 0
+      && contrNote.text.length == 0);
+
+      //svuoto il testo con i dati
       if(dati.length != 0 ){
         dati = "";
       }
@@ -228,6 +282,7 @@ sovrascrive le lettere.
   */
 
    void _selnome(){
+     //seleziono il testo quando il textField riceve il focus
      String text = contrNome.text;
      contrNome.value = contrNome.value.copyWith(
         text: text,
@@ -270,16 +325,5 @@ sovrascrive le lettere.
     );
   }
 
-  @override
-  void dispose(){
-    contrNome.dispose();
-    contrCognome.dispose();
-    contrEmail.dispose();
-    contrCitta.dispose();
-    contrVia.dispose();
-    contrNote.dispose();
-    super.dispose();
-  }
 
 }
-
