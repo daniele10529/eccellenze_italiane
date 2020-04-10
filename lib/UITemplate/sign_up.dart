@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:eccellenzeitaliane/UITemplate/data_page.dart';
+import 'package:eccellenzeitaliane/UITemplate/log_in.dart';
 
-class First_page extends StatefulWidget{
+class Sign_up extends StatefulWidget{
   //creo lo stato del widget istanziando una classe per gli oggetti
   @override
   State<StatefulWidget> createState() {
@@ -10,7 +10,7 @@ class First_page extends StatefulWidget{
   }
 }
 
-class my_content extends State<First_page>{
+class my_content extends State<Sign_up>{
 
   String dati = "";
   String titolo = "Eccellenze Italiane";
@@ -41,7 +41,7 @@ class my_content extends State<First_page>{
             icon: const Icon(Icons.arrow_forward_ios),
             tooltip: 'Pagina dei dati',
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Data_page()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Log_in()),);
             },
           ),
         ],
@@ -248,7 +248,7 @@ class my_content extends State<First_page>{
   _ontapitem(int index){
     setState(() {
       if(index == 1){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Data_page()),);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Log_in()),);
       }
       if(index == 2){
         dati = "Andrai a pagina 2";
