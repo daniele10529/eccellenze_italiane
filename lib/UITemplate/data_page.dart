@@ -9,51 +9,78 @@ class Data_page extends StatefulWidget{
   }
 }
 
-class data_content extends State<Data_page>{
 
+
+class data_content extends State<Data_page>{
 
   @override
   Widget build(BuildContext context) {
 
-    Navigator.push(context, MaterialPageRoute(
+    return Scaffold(
 
-      builder: (BuildContext context) {
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          tooltip: "Pagina dei dati",
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: <Widget>[
+          new Image.asset("assets/icons/logo.png"),
+        ],
+        title: new Text('Pagina dei dati',
+          style: TextStyle(color: Colors.red,fontFamily: "Ubuntu",fontSize: 22),),
+      ),
 
-        return Scaffold(
-
-          appBar: AppBar(
-            backgroundColor: Colors.blueGrey,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
-              tooltip: "Pagina dei dati",
-              onPressed: () {
-                Navigator.pop(context);
-              },
+      body: new Container(
+        child: new Column(
+          children: <Widget>[
+            new Center(
+              child: Text("I dati sono : "),
             ),
-            actions: <Widget>[
-              new Image.asset("assets/icons/logo.png"),
-            ],
-            title: new Text('Pagina dei dati',
-            style: TextStyle(color: Colors.red,fontFamily: "Ubuntu",fontSize: 22),),
+          ],
+        ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group_add),
+            title: new Text("Registrati",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
           ),
-
-          body: new Container(
-            child: new Column(
-              children: <Widget>[
-                new Center(
-                  child: Text("I dati sono : "),
-                ),
-              ],
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            title: new Text("Log-in",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            title: new Text("Prodotti",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
+          ),
+        ],
+        onTap: _ontapitem,
+        selectedItemColor: Colors.amber[800],
+        currentIndex: 1,
+      ),
 
+    );
 
-        );
-
-      },
-
-    ));
 
   }
+
+  _ontapitem(int index){
+    setState(() {
+
+      if(index == 0){
+        Navigator.pop(context);
+      }
+      if(index == 2){
+
+      }
+    });
+  }
+
 }
+
 

@@ -41,7 +41,7 @@ class my_content extends State<First_page>{
             icon: const Icon(Icons.arrow_forward_ios),
             tooltip: 'Pagina dei dati',
             onPressed: () {
-              new data_content().build(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Data_page()),);
             },
           ),
         ],
@@ -222,8 +222,38 @@ class my_content extends State<First_page>{
 
       ),
 
+      bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.group_add),
+              title: new Text("Registrati",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              title: new Text("Log-in",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_shopping_cart),
+              title: new Text("Prodotti",style: TextStyle(color: Colors.lightBlueAccent,fontSize: 14),),
+            ),
+          ],
+        onTap: _ontapitem,
+        selectedItemColor: Colors.amber[800],
+        currentIndex: 0,
+      ),
     );
 
+  }
+
+  _ontapitem(int index){
+    setState(() {
+      if(index == 1){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Data_page()),);
+      }
+      if(index == 2){
+        dati = "Andrai a pagina 2";
+      }
+    });
   }
 
   void _assegnanome(){
@@ -268,22 +298,6 @@ class my_content extends State<First_page>{
       }
     });
   }
-
-/*
-avevo provato ad utilizzre una funzione generica per selezionare il testo quando il
-TextField riceve il focus ma si comporta in modo strano
-sovrascrive le lettere.
-  _select(TextEditingController t){
-    setState(() {
-      String text =  t.text;
-      t.value = t.value.copyWith(
-        text: text,
-        selection : TextSelection(baseOffset: 0,extentOffset: text.length),
-      );
-      return;
-    });
-  }
-  */
 
    void _selnome(){
      //seleziono il testo quando il textField riceve il focus
