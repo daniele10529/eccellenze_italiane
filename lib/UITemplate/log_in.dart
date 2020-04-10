@@ -9,8 +9,6 @@ class Log_in extends StatefulWidget{
   }
 }
 
-
-
 class login_content extends State<Log_in>{
 
   bool btnDisable = true;
@@ -33,7 +31,7 @@ class login_content extends State<Log_in>{
           },
         ),
         actions: <Widget>[
-          new Image.asset("assets/icons/logo.png"),
+          new Image.asset("assets/icons/log-in64.png"),
         ],
         title: new Text("Eccellenze Italiane",
           style: TextStyle(color: Colors.red,fontFamily: "Ubuntu",fontSize: 30),),
