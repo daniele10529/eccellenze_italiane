@@ -196,6 +196,7 @@ class my_content extends State<Sign_up>{
                         style: TextStyle(color: Colors.black87,fontSize: 18),),
                       //finche la variabile è true restituisce null all'onpress
                       onPressed: btnDisable ? null : (){
+                        debugPrint('Bottone inserisci ok!');
                         _assegnanome();
                       }
                   ),
