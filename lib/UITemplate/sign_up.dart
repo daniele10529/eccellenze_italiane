@@ -185,9 +185,14 @@ class my_content extends State<Sign_up>{
             new Row(
               children: <Widget>[
                 new Container(
-                  padding: EdgeInsets.only(top: 50),
+                  padding: EdgeInsets.only(top: 50, left: 50),
                   child:
                   new RaisedButton(
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(18),
+                        side: new BorderSide(color: Colors.purpleAccent),
+                      ),
+                      color: new Color.fromRGBO(156, 164, 255, 0.57),
                       child: Text("Inserisci",
                         style: TextStyle(color: Colors.black87,fontSize: 18),),
                       //finche la variabile è true restituisce null all'onpress
@@ -202,6 +207,11 @@ class my_content extends State<Sign_up>{
                   padding: EdgeInsets.only(top: 50,left: 50),
                   child:
                   new RaisedButton(
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(18),
+                        side: new BorderSide(color: Colors.purpleAccent),
+                      ),
+                      color: new Color.fromRGBO(156, 164, 255, 0.57),
                       child: Text("Svuota campi",
                         style: TextStyle(color: Colors.black87,fontSize: 18),),
                       //finche la variabile è true restituisce null all'onpress

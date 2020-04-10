@@ -94,33 +94,42 @@ class login_content extends State<Log_in>{
 
             new Row(
               children: <Widget>[
+               new Container(
+                   padding: EdgeInsets.only(top: 50,left: 50),
+                   child:
+                   new RaisedButton(
+                       shape: new RoundedRectangleBorder(
+                         borderRadius: new BorderRadius.circular(18),
+                         side: new BorderSide(color: Colors.purpleAccent),
+                       ),
+                       color: new Color.fromRGBO(156, 164, 255, 0.57),
+                       child: Text("Log_In",
+                         style: TextStyle(color: Colors.black87,fontSize: 18),),
+                       //finche la variabile è true restituisce null all'onpress
+                       onPressed: btnDisable ? null : (){
+                         debugPrint(contrUser.text + " "+ contrPsw.text);
+                       }
+                   ),
+                 ),
+
                 new Container(
-                  padding: EdgeInsets.only(top: 50),
-                  child:
-                  new RaisedButton(
-                      child: Text("Log_In",
-                        style: TextStyle(color: Colors.black87,fontSize: 18),),
-                      //finche la variabile è true restituisce null all'onpress
-                      onPressed: btnDisable ? null : (){
-                       debugPrint(contrUser.text + " "+ contrPsw.text);
-                      }
+                    padding: EdgeInsets.only(top: 50,left: 50),
+                    child:
+                    new RaisedButton(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(18),
+                          side: new BorderSide(color: Colors.purpleAccent),
+                        ),
+                        color: new Color.fromRGBO(156, 164, 255, 0.57),
+                        child: Text("Svuota campi",
+                          style: TextStyle(color: Colors.black87,fontSize: 18),),
+                        //finche la variabile è true restituisce null all'onpress
+                        onPressed: insert ? null : (){
+                          _clearFileds();
+                        }
+                    ),
+
                   ),
-
-                ),
-
-                new Container(
-                  padding: EdgeInsets.only(top: 50,left: 50),
-                  child:
-                  new RaisedButton(
-                      child: Text("Svuota campi",
-                        style: TextStyle(color: Colors.black87,fontSize: 18),),
-                      //finche la variabile è true restituisce null all'onpress
-                      onPressed: insert ? null : (){
-                        _clearFileds();
-                      }
-                  ),
-
-                ),
 
               ],
 
@@ -151,7 +160,6 @@ class login_content extends State<Log_in>{
       ),
 
     );
-
 
   }
 
