@@ -210,7 +210,7 @@ class my_content extends State<Sign_up>{
                     //disegno le forme arrotondate
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(18),
-                        side: new BorderSide(color: Colors.purpleAccent),
+                        side: new BorderSide(color: Colors.blueAccent),
                       ),
                       color: new Color.fromRGBO(156, 164, 255, 0.57),
                       child: Text("Svuota campi",

@@ -74,7 +74,9 @@ flutter:
   fonts:
     - family: Ubuntu
       fonts:
+        - asset: assets/Ubuntu_fonts/Ubuntu-Regular.ttf
         - asset: assets/Ubuntu_fonts/Ubuntu-Italic.ttf
           style: italic
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
