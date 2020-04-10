@@ -1,4 +1,4 @@
-import 'package:eccellenzeitaliane/UITemplate/sign_up.dart';
+//import 'package:eccellenzeitaliane/UITemplate/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +23,7 @@ class login_content extends State<Log_in>{
   Widget build(BuildContext context) {
     //ritorno il contenitore principale
     return Scaffold(
+     resizeToAvoidBottomPadding: false,
 
       //inserisco una barra superiore
       appBar: AppBar(
@@ -57,7 +58,7 @@ class login_content extends State<Log_in>{
 
             new Center(
               child: Text("Effettua il Log_In",
-                style: TextStyle(color: Colors.purple,fontSize: 24),
+                style: TextStyle(color: Colors.purple,fontSize: 24,fontFamily: "Ubuntu"),
               ),
             ),
 
