@@ -14,7 +14,7 @@ class login_content extends State<Log_in>{
 
   bool btnDisable = true;
   bool insert = true;
-  //istanzio i controller da agganciare alle TextField
+  //istanzio i controller da agganciare alle TextFields
   TextEditingController contrUser = new TextEditingController();
   TextEditingController contrPsw = new TextEditingController();
 
