@@ -35,7 +35,7 @@ class login_content extends State<Log_in>{
         actions: <Widget>[
           new Image.asset("assets/icons/logo.png"),
         ],
-        title: new Text('Pagina di Log-In',
+        title: new Text("Eccellenze Italiane",
           style: TextStyle(color: Colors.red,fontFamily: "Ubuntu",fontSize: 30),),
       ),
 
